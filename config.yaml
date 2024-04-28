@@ -1,0 +1,5 @@
+mail:
+  host: test.example.com
+  username: test@example.com
+  password: "*******"
+  from: "Test"
