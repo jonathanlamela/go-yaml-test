@@ -6,9 +6,21 @@ import (
 	"os"
 )
 
+type MailConfig struct {
+	Host     string `yaml:"host"`
+	Username string `yaml:"username"`
+	Password string `yaml:"password"`
+	From     string `yaml:"from"`
+}
+
+type Config struct {
+	Mail MailConfig `yaml:"mail"`
+}
+
 func main() {
 
-	var config map[string]interface{}
+	var config Config
+	var mailConfig MailConfig
 
 	fileContent, err := os.ReadFile("config.yaml")
 
@@ -22,6 +34,11 @@ func main() {
 		fmt.Println("Impossibile eseguire il parsing del file yaml")
 	}
 
-	fmt.Println(config)
+	mailConfig = config.Mail
+
+	fmt.Println(mailConfig.Username)
+	fmt.Println(mailConfig.Password)
+	fmt.Println(mailConfig.Host)
+	fmt.Println(mailConfig.From)
 
 }
